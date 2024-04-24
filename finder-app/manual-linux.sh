@@ -116,7 +116,7 @@ cp finder.sh $OUTDIR/rootfs/home/
 cp finder-test.sh $OUTDIR/rootfs/home/
 cp autorun-qemu.sh $OUTDIR/rootfs/home/
 cd $OUTDIR/rootfs/home/
-sed -i 's@cat ../@cat @g' finder-test.sh
+# sed -i 's@cat ../@cat @g' finder-test.sh
 
 # TODO: Chown the root directory
 cd $OUTDIR/rootfs
