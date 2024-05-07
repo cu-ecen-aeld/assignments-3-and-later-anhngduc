@@ -195,7 +195,6 @@ int main(int argc, char *argv[])
             {
                 printf("\nCaught SIGINT or SIGTERM in accept!\n");
                 if (sockfd) close(sockfd);
-                if (new_fd) close(new_fd);
                 remove(FILE_PATH);
                 
                 return success ? 0 : 1;
@@ -218,8 +217,7 @@ int main(int argc, char *argv[])
             char buf[MAXDATASIZE];
             char *nl = "\n";
 
-            FILE *fptr;
-            syslog(LOG_DEBUG, "Writing %s to %s", buf, FILE_PATH);
+            FILE *fptr = NULL;
 
             // Open and write string to file
             fptr = fopen(FILE_PATH, "a+");
