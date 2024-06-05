@@ -1,13 +1,14 @@
 CROSS_COMPILE=
 
-CC=${CROSS_COMPILE}gcc
-CFLAGS= -g -Wall -Werror
-LDFLAGS=-pthread
+CC ?= $(CROSS_COMPILE)gcc
+CFLAGS ?= -g -Wall -Werror
+TARGET ?= aesdsocket
+LDFLAGS ?= -pthread -lrt
 
 all: aesdsocket.o
 	echo ${CC}
-	$(CC) -g -Wall -c -o aesdsocket.o aesdsocket.c $(LDFLAGS)
-	$(CC) -g -Wall -I / aesdsocket.o -o aesdsocket $(LDFLAGS)
+	$(CC) $(CFLAGS) -g -Wall -c -o aesdsocket.o aesdsocket.c $(LDFLAGS)
+	$(CC) $(CFLAGS) -g -Wall -I / aesdsocket.o -o aesdsocket $(LDFLAGS)
 
 .PHONY: clean
 clean:

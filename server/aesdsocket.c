@@ -173,12 +173,6 @@ void *thread_timer(void *thread_param)
             }
             else
             {
-                // printf("wait_to_release_ms: %d\n", thread_func_args->wait_to_release_ms);
-                
-                
-                printf("it's time!\n"); 
-            
-
                 char outstr[200];
                 time_t t;
                 struct tm *tmp;
@@ -194,8 +188,7 @@ void *thread_timer(void *thread_param)
                     fprintf(stderr, "strftime returned 0");
                     exit(EXIT_FAILURE);
                 }
-                printf("Result string is \"%s\"\n", outstr);
-
+               
                 FILE *fptr = NULL;
 
                 // Open and write string to file
@@ -205,8 +198,6 @@ void *thread_timer(void *thread_param)
 
                 // Close file, socket
                 fclose(fptr);
-                
-                printf("Job has finished\n"); 
                 
             }
 
